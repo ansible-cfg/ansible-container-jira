@@ -1,0 +1,31 @@
+---
+
+sudo: required
+
+dist: trusty
+
+language: python
+
+python:
+  - 2.7
+
+services:
+  - docker
+
+env:
+  global:
+    - ANSIBLE_FORCE_COLOR: true
+    - ANSIBLE_LOG_PATH: './ansible.log'
+    - ANSIBLE_ROLES_PATH: '../'
+
+before_install:
+  - pip install --upgrade --upgrade-strategy only-if-needed ansible docker-py docker-compose
+  - pip install --upgrade --upgrade-strategy only-if-needed ansible-container[docker]
+
+install:
+  - pip install -r ansible-requirements.txt
+  - ansible-galaxy install -r tests/requirements.yml
+
+script:
+  - yamllint -c .yamllint .
+  - ansible-container build
