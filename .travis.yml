@@ -12,12 +12,6 @@ python:
 services:
   - docker
 
-env:
-  global:
-    - ANSIBLE_FORCE_COLOR: true
-    - ANSIBLE_LOG_PATH: './ansible.log'
-    - ANSIBLE_ROLES_PATH: '../'
-
 before_install:
   - pip install --upgrade --upgrade-strategy only-if-needed ansible docker-py docker-compose
   - pip install --upgrade --upgrade-strategy only-if-needed ansible-container[docker]
@@ -29,7 +23,8 @@ install:
 script:
   - yamllint -c .yamllint .
   - ansible-container build --use-local-python -- --diff --verbose
-  - tail -n 1 ansible.log | grep -Eq 'changed=0 +unreachable=0 +failed=0'
   - ansible-container run
   - docker ps -a
   - docker images
+  - ansible-container stop --force
+  - ansible-container destroy
