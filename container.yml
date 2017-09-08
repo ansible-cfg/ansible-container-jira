@@ -46,6 +46,7 @@ services:
   jira:
     from: "ubuntu:16.04"
     roles:
+      - { role: docker_container_init, gather_facts: no }
       - python
       - apt
       - java
