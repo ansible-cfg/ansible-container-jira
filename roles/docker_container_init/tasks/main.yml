@@ -1,8 +1,0 @@
----
-# tasks file for docker_container_init
-
-- name: apt-get update
-  raw: apt-get update
-
-- name: apt-get install python-minimal
-  raw: apt-get install -y python-minimal
