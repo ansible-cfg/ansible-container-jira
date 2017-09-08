@@ -28,7 +28,7 @@ install:
 
 script:
   - yamllint -c .yamllint .
-  - ansible-container build -- --diff --verbose
+  - ansible-container build --use-local-python -- --diff --verbose
   - tail -n 1 ansible.log | grep -Eq 'changed=0 +unreachable=0 +failed=0'
   - ansible-container run
   - docker ps -a
