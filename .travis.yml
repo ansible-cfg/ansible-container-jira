@@ -33,4 +33,3 @@ script:
   - docker ps -a
   - docker images
   - ansible-container stop --force
-  - ansible-container destroy
