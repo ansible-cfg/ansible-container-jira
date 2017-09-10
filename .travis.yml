@@ -28,7 +28,7 @@ install:
 
 script:
   - yamllint -c .yamllint .
-  - ansible-container --debug build --use-local-python -- --diff --verbose
+  - ansible-container build --use-local-python -- --diff --verbose
   - ansible-container run
   - docker ps -a
   - docker images
