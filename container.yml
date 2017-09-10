@@ -70,7 +70,7 @@ services:
       - "8080:8080"
     tmpfs:
       - /run
-    command: ["uname -a"]
+    command: ["/etc/init.d/jira", "start"]
     dev_overrides:
       environment:
         - "DEBUG=1"
