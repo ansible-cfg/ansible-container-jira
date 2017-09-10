@@ -15,3 +15,7 @@
 - name: java
   src: https://github.com/alvistack/ansible-role-java
   version: master
+
+- name: jira
+  src: https://github.com/alvistack/ansible-role-jira
+  version: master

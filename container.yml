@@ -65,6 +65,7 @@ services:
       - { role: python, gather_facts: no }
       - role: apt
       - role: java
+      - role: jira
     ports:
       - "8080:8080"
     tmpfs:
