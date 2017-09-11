@@ -8,6 +8,10 @@
   src: https://github.com/alvistack/ansible-role-python
   version: master
 
+- name: dumb-init
+  src: https://github.com/alvistack/ansible-role-dumb-init
+  version: master
+
 - name: apt
   src: https://github.com/alvistack/ansible-role-apt
   version: master

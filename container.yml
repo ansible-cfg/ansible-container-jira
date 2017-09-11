@@ -63,6 +63,7 @@ services:
     from: "ubuntu:16.04"
     roles:
       - { role: python, gather_facts: no }
+      - role: dumb-init
       - role: apt
       - role: java
       - role: jira
@@ -70,6 +71,7 @@ services:
       - "8080:8080"
     tmpfs:
       - /run
+    entrypoint: ["/usr/bin/dumb-init", "--"]
     command: ["/etc/init.d/jira", "start"]
     dev_overrides:
       environment:
