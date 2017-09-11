@@ -19,14 +19,16 @@ env:
     - ANSIBLE_ROLES_PATH: '../'
 
 before_install:
-  - pip install --upgrade --upgrade-strategy only-if-needed ansible docker 'docker-compose<1.16.0'
-  - pip install --upgrade --upgrade-strategy only-if-needed ansible-container[docker]
+  - pip install ansible ansible-container[docker]
 
 install:
   - pip install -r ansible-requirements.txt
   - ansible-galaxy install -r requirements.yml
 
 script:
+  - docker version
+  - docker-compose version
+  - docker info
   - yamllint -c .yamllint .
   - ansible-container build --use-local-python -- --diff --verbose
   - ansible-container run
