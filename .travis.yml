@@ -19,7 +19,7 @@ env:
     - ANSIBLE_ROLES_PATH: '../'
 
 before_install:
-  - pip install --upgrade --upgrade-strategy only-if-needed ansible docker-py docker-compose
+  - pip install --upgrade --upgrade-strategy only-if-needed ansible docker docker-compose
   - pip install --upgrade --upgrade-strategy only-if-needed ansible-container[docker]
 
 install:
