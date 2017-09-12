@@ -72,7 +72,7 @@ services:
     tmpfs:
       - /run
     entrypoint: ["/usr/bin/dumb-init", "--"]
-    command: ["/etc/init.d/jira", "start"]
+    command: ["/etc/init.d/jira", "start", "-fg"]
     dev_overrides:
       environment:
         - "DEBUG=1"
