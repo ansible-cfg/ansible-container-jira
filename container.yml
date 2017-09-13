@@ -63,10 +63,10 @@ services:
     from: "ubuntu:16.04"
     roles:
       - { role: python, gather_facts: no }
-      - role: dumb-init
       - role: apt
       - role: java
       - role: jira
+      - role: dumb-init
     ports:
       - "8080:8080"
     tmpfs:
