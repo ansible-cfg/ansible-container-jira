@@ -62,11 +62,15 @@ services:
   jira:
     from: "ubuntu:16.04"
     roles:
-      - { role: python, gather_facts: no }
+      - role: python
+        gather_facts: no
       - role: apt
       - role: java
       - role: jira
       - role: dumb-init
+        dumb_init_dest: "/usr/bin"
+      - role: mariadb-connector-java
+        mariadb_connector_java_dest: "/opt/atlassian/jira/lib"
     ports:
       - "8080:8080"
     tmpfs:
@@ -76,6 +80,7 @@ services:
     dev_overrides:
       environment:
         - "DEBUG=1"
+
 registries: {}
   # Add optional registries used for deployment. For example:
   #  google:

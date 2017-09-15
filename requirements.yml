@@ -8,10 +8,6 @@
   src: https://github.com/alvistack/ansible-role-python
   version: master
 
-- name: dumb-init
-  src: https://github.com/alvistack/ansible-role-dumb-init
-  version: master
-
 - name: apt
   src: https://github.com/alvistack/ansible-role-apt
   version: master
@@ -22,4 +18,12 @@
 
 - name: jira
   src: https://github.com/alvistack/ansible-role-jira
+  version: master
+
+- name: dumb-init
+  src: https://github.com/alvistack/ansible-role-dumb-init
+  version: master
+
+- name: mariadb-connector-java
+  src: https://github.com/alvistack/ansible-role-mariadb-connector-java
   version: master
