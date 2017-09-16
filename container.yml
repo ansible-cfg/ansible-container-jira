@@ -68,9 +68,9 @@ services:
       - role: java
       - role: jira
       - role: dumb-init
-        dumb_init_dest: "/usr/bin"
+        dumb_init_dest: "/usr/bin/dumb-init"
       - role: mariadb-connector-java
-        mariadb_connector_java_dest: "/opt/atlassian/jira/lib"
+        mariadb_connector_java_dest: "/opt/atlassian/jira/lib/mariadb-connector-java.jar"
     ports:
       - "8080:8080"
     tmpfs:
