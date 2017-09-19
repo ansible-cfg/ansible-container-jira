@@ -4,6 +4,7 @@ Ansible Container for JIRA
 [![Build Status](https://travis-ci.org/alvistack/ansible-container-jira.svg?branch=master)](https://travis-ci.org/alvistack/ansible-container-jira)
 [![GitHub tag](https://img.shields.io/github/tag/alvistack/ansible-container-jira.svg)](https://github.com/alvistack/ansible-container-jira)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-container-jira.svg)](https://github.com/alvistack/ansible-container-jira/blob/master/LICENSE)
+[![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.container--jira-blue.svg)](https://galaxy.ansible.com/alvistack/container-jira)
 
 Ansible Container for JIRA.
 
