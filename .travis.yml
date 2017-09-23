@@ -28,6 +28,7 @@ install:
   - ansible-galaxy install -r requirements.yml
 
 script:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker version
   - docker-compose version
   - docker info
@@ -39,8 +40,15 @@ script:
   - ansible-container stop --force
 
 after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - sh -c 'if [! -z $TRAVIS_TAG ]; then ansible-container push --tag $TRAVIS_REPO_SLUG:$TRAVIS_TAG; fi'
+  - |
+    if [ ! -z ${TRAVIS_TAG+x} ]; then
+      read -a v <<< $(echo ${TRAVIS_TAG} | sed 's/[\.\-]/ /g')
+      ansible-container push --tag $TRAVIS_REPO_SLUG:${v[0]}.${v[1]}.${v[2]}-${v[3]}
+      ansible-container push --tag $TRAVIS_REPO_SLUG:${v[0]}.${v[1]}.${v[2]}
+      ansible-container push --tag $TRAVIS_REPO_SLUG:${v[0]}.${v[1]}
+      ansible-container push --tag $TRAVIS_REPO_SLUG:${v[0]}
+      ansible-container push --tag $TRAVIS_REPO_SLUG
+    fi
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
