@@ -47,7 +47,7 @@ after_success:
       ansible-container push --push-to docker --tag ${v[0]}.${v[1]}.${v[2]}
       ansible-container push --push-to docker --tag ${v[0]}.${v[1]}
       ansible-container push --push-to docker --tag ${v[0]}
-      ansible-container push --push-to docker
+      ansible-container push --push-to docker --tag latest
     fi
 
 notifications:
