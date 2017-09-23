@@ -38,5 +38,9 @@ script:
   - docker images
   - ansible-container stop --force
 
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - ansible-container push --tag $TRAVIS_REPO_SLUG:$TRAVIS_TAG
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
