@@ -40,7 +40,7 @@ script:
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - ansible-container push --tag $TRAVIS_REPO_SLUG:$TRAVIS_TAG
+  - sh -c 'if [! -z $TRAVIS_TAG ]; then ansible-container push --tag $TRAVIS_REPO_SLUG:$TRAVIS_TAG; fi'
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
