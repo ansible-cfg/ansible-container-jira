@@ -41,8 +41,10 @@ script:
 
 after_success:
   - |
-    if [ ! -z ${TRAVIS_TAG+x} ]; then
-      read -a v <<< $(echo ${TRAVIS_TAG} | sed 's/[\.\-]/ /g')
+    echo $TRAVIS_BRANCH
+    echo $TRAVIS_TAG
+    if [[ $TRAVIS_BRANCH =~ ^[0-9]+\.[0-9]+\.[0-9]+\-*.* ]]; then
+      read -a v <<< $(echo ${TRAVIS_BRANCH} | sed 's/[\.\-]/ /g')
       ansible-container push --push-to docker --tag ${v[0]}.${v[1]}.${v[2]}-${v[3]}
       ansible-container push --push-to docker --tag ${v[0]}.${v[1]}.${v[2]}
       ansible-container push --push-to docker --tag ${v[0]}.${v[1]}
