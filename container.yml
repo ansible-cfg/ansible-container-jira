@@ -92,6 +92,9 @@ services:
 
 registries:
   # Add optional registries used for deployment. For example:
+  #  google:
+  #    url: https://gcr.io
+  #    namespace: my-cool-project-xxxxxx
 
   docker:
     url: https://index.docker.io/v1/
