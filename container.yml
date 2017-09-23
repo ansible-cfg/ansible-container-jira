@@ -90,7 +90,7 @@ services:
       environment:
         - "DEBUG=1"
 
-registries: {}
+registries:
   # Add optional registries used for deployment. For example:
 
   docker:
