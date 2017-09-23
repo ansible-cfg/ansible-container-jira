@@ -43,11 +43,11 @@ after_success:
   - |
     if [ ! -z ${TRAVIS_TAG+x} ]; then
       read -a v <<< $(echo ${TRAVIS_TAG} | sed 's/[\.\-]/ /g')
-      ansible-container push --push-to docker --tag $TRAVIS_REPO_SLUG:${v[0]}.${v[1]}.${v[2]}-${v[3]}
-      ansible-container push --push-to docker --tag $TRAVIS_REPO_SLUG:${v[0]}.${v[1]}.${v[2]}
-      ansible-container push --push-to docker --tag $TRAVIS_REPO_SLUG:${v[0]}.${v[1]}
-      ansible-container push --push-to docker --tag $TRAVIS_REPO_SLUG:${v[0]}
-      ansible-container push --push-to docker --tag $TRAVIS_REPO_SLUG
+      ansible-container push --push-to docker --tag ${v[0]}.${v[1]}.${v[2]}-${v[3]}
+      ansible-container push --push-to docker --tag ${v[0]}.${v[1]}.${v[2]}
+      ansible-container push --push-to docker --tag ${v[0]}.${v[1]}
+      ansible-container push --push-to docker --tag ${v[0]}
+      ansible-container push --push-to docker
     fi
 
 notifications:
