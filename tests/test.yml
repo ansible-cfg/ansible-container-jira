@@ -30,4 +30,4 @@
         url: "http://localhost:8080"
         return_content: "yes"
       register: result
-      failed_when: "'Atlassian JIRA' not in result.content"
+      failed_when: "'JIRA setup' not in result.content"
