@@ -7,7 +7,7 @@ Ansible Container for JIRA
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.container--jira-blue.svg)](https://galaxy.ansible.com/alvistack/container-jira)
 [![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/ansible-container-jira.svg)](https://hub.docker.com/r/alvistack/ansible-container-jira/)
 
-Ansible Container for JIRA.
+Ansible Container for Atlassian JIRA.
 
 License
 -------
