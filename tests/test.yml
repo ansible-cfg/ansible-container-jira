@@ -22,13 +22,17 @@
         port: "8080"
         delay: "10"
 
-    - name: check page
+    - name: wait for page get ready
       uri:
         url: "http://localhost:8080"
         status_code: "200"
         timeout: "300"
-        return_content: "yes"
       async: "300"
       poll: "10"
+
+    - name: check page
+      uri:
+        url: "http://localhost:8080"
+        return_content: "yes"
       register: result
       failed_when: "'JIRA - JIRA setup' not in result.content"
