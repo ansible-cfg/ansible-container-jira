@@ -28,7 +28,7 @@
         status_code: "200"
       register: result
       until: result.status == "200"
-      retry: "30"
+      retries: "30"
       delay: "10"
 
     - name: check page
