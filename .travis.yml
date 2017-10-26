@@ -19,7 +19,7 @@ env:
     - ANSIBLE_ROLES_PATH: '../'
 
 before_install:
-  - pip install --upgrade ansible
+  - pip install --upgrade git+git://github.com/ansible/ansible.git@stable-2.4
   - pip install --upgrade docker docker-compose
   - pip install --upgrade ansible-container[docker,k8s]
 
@@ -27,13 +27,16 @@ install:
   - pip install -r ansible-requirements.txt
   - ansible-galaxy install -r requirements.yml
 
-before_script:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-
 script:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker version
+  - docker-compose version
+  - docker info
   - yamllint -c .yamllint .
   - ansible-container build --use-local-python -- --diff --verbose
   - ansible-container run
+  - docker ps -a
+  - docker image list
   - ansible-playbook -i localhost, -c local tests/test.yml --syntax-check
   - ansible-playbook -i localhost, -c local tests/test.yml --diff --verbose
   - ansible-playbook -i localhost, -c local tests/test.yml --diff --verbose
