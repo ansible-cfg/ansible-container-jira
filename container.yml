@@ -90,6 +90,8 @@ services:
     dev_overrides:
       environment:
         - "DEBUG=1"
+      volumes:
+        - /var/atlassian/application-data/jira:/var/atlassian/application-data/jira
 
 registries:
   # Add optional registries used for deployment. For example:
