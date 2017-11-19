@@ -76,6 +76,7 @@ services:
       - role: apt
       - role: java
       - role: jira
+        jira_url: "https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-core-7.5.3.tar.gz"
       - role: mariadb-connector-java
         mariadb_connector_java_dest: "/opt/atlassian/jira/lib/mariadb-connector-java.jar"
       - role: dumb-init
