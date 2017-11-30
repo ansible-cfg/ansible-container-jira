@@ -71,15 +71,15 @@ services:
   jira:
     from: "ubuntu:16.04"
     roles:
-      - role: python
+      - role: ansible-role-python
         gather_facts: no
-      - role: apt
-      - role: java
-      - role: jira
+      - role: ansible-role-apt
+      - role: ansible-role-java
+      - role: ansible-role-jira
         jira_url: "https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-core-7.6.0.tar.gz"
-      - role: mariadb-connector-java
+      - role: ansible-role-mariadb-connector-java
         mariadb_connector_java_dest: "/opt/atlassian/jira/lib/mariadb-connector-java.jar"
-      - role: dumb-init
+      - role: ansible-role-dumb-init
         dumb_init_dest: "/usr/bin/dumb-init"
     ports:
       - "8005:8005"

@@ -26,6 +26,10 @@ Volume permission is managed by entry scripts. To get started you can use a data
 
 Start Atlassian JIRA Server:
 
+    # Pull latest image
+    docker pull alvistack/ansible-container-jira
+
+    # Run as detach
     docker run \
         -itd \
         -n jira \
@@ -39,12 +43,19 @@ Please ensure your container has the necessary resources allocated to it. We rec
 
 ### Configuration
 
-We don't provide any dynamic configuration by using environment variable; by the way, since this Docker container is created by using Ansible Container with [Ansible Role for JIRA](https://github.com/alvistack/ansible-role-jira), you could create a playbook for your customization, retouch the running Docker instance, then restart it:
+We don't provide any dynamic configuration by using environment variable; by the way, since this Docker container is created by using Ansible Container with [Ansible Role for JIRA](https://github.com/alvistack/ansible-role-jira), you could install all required Ansible Roles, retouch the running Docker instance with `ansible-playbook` and `--extra-vars`, then restart it:
 
-    ansible-playbook \
-        -i jira,
-        -c docker
-        /path/to/playbook.yml
+    # Install required Ansible Roles
+    ansible-galaxy install -r requirements.yml 
+
+    # Configuration
+    ansible-playbook --verbose --diff \
+        --inventory jira, \
+        --connection docker \
+        --extra-vars '{"jira_scheme":"https","jira_proxy_name":"example.com","jira_context_path":"jira"}' \
+        tests/config.yml
+
+    # Restart container
     docker restart jira
 
 Upgrade
