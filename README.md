@@ -32,9 +32,9 @@ Start Atlassian JIRA Server:
     # Run as detach
     docker run \
         -itd \
-        -n jira \
-        -p 8080:8080 \
-        -v /var/atlassian/application-data/jira:/var/atlassian/application-data/jira \
+        --name jira \
+        --publish 8080:8080 \
+        --volume /var/atlassian/application-data/jira:/var/atlassian/application-data/jira \
         alvistack/ansible-container-jira
 
 **Success**. JIRA is now available on <http://localhost:8080>
