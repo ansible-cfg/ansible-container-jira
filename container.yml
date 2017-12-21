@@ -76,7 +76,7 @@ services:
       - role: ansible-role-apt
       - role: ansible-role-java
       - role: ansible-role-jira
-        jira_url: "https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-core-7.6.1.tar.gz"
+        jira_url: "https://downloads.atlassian.com/software/jira/downloads/atlassian-jira-core-7.6.2.tar.gz"
       - role: ansible-role-mariadb-connector-java
         mariadb_connector_java_dest: "/opt/atlassian/jira/lib/mariadb-connector-java.jar"
       - role: ansible-role-dumb-init
